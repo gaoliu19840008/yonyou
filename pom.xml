@@ -5,7 +5,7 @@
   <groupId>yonyou</groupId>
   <artifactId>yonyou</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>yonyou</name>
   <url>http://maven.apache.org</url>
@@ -45,6 +45,29 @@
          <warSourceExcludes>WEB-INF/lib/log4j-${log4j.version}.jar</warSourceExcludes>   
       </configuration>   
    </plugin>   
+   
+   <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.4.5</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat7x</containerId>
+                        <home>F:\ssc\Tomcat 8.0</home>
+                    </container>
+                    <configuration>
+                        <type>existing</type>
+                        <home>F:\ssc\Tomcat 8.0</home>
+                    </configuration>
+                </configuration>
+                <executions>
+        <execution>
+            <id>tomcat-deploy</id>
+            <phase>package</phase>
+            <goals><goal>deploy</goal></goals>
+        </execution>
+    </executions>	
+</plugin>
   </plugins>   
 </build>  
 </project>
